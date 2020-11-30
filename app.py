@@ -284,5 +284,5 @@ def render_tour(id):
 
 #app.run('0.0.0.0', 8000)    #run for debag
 
-if __name__ == '__main__':   #run prodaction
+if __name__ == '__main__':   #run production
     app.run()
