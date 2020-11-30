@@ -252,24 +252,35 @@ def render_main():
 
 @app.route('/departures/<departure>/')
 def render_departure(departure):
-    departure_tours = []
-    for tour in tours.values():
+    departure_tours = {}
+    price_list = []
+    nights_list = []
+    for key, tour in tours.items():
         if tour['departure'] == departure:
-            departure_tours.append(tour)
+            departure_tours[key] = tour
+            price_list.append(tour['price'])
+            nights_list.append(tour['nights'])
     return render_template('departure.html',
+                           title=title,
                            tours=departure_tours,
-                           departures=departures)
+                           price_list=price_list,
+                           nights_list=nights_list,
+                           departures=departures,
+                           departure=departure)
 
 
 @app.route('/tours/<int:id>/')
 def render_tour(id):
+    print(request.path)
     tour_data = tours[id]
     tour_departure = departures[tour_data["departure"]]
     tour_stars = int(tour_data["stars"])
     return render_template('tour.html',
+                           title=title,
                            tour=tour_data,
                            stars=tour_stars,
-                           departure=tour_departure)
+                           departure=tour_departure,
+                           departures=departures)
 
 
 app.run('0.0.0.0', 8000)
