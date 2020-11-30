@@ -271,7 +271,6 @@ def render_departure(departure):
 
 @app.route('/tours/<int:id>/')
 def render_tour(id):
-    print(request.path)
     tour_data = tours[id]
     tour_departure = departures[tour_data["departure"]]
     tour_stars = int(tour_data["stars"])
@@ -282,7 +281,7 @@ def render_tour(id):
                            departure=tour_departure,
                            departures=departures)
 
-#app.run('0.0.0.0', 8000)    #run for debag
+app.run('0.0.0.0', 8000)    #run for debag
 
-if __name__ == '__main__':   #run prodaction
-    app.run()
+#if __name__ == '__main__':   #run prodaction
+   # app.run()

@@ -140,7 +140,7 @@ dmypy.json
 cython_debug/
 
 # Media files
-/static/
+/static/hero
 
 # settings
 .idea/
