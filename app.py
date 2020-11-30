@@ -281,7 +281,7 @@ def render_tour(id):
                            departure=tour_departure,
                            departures=departures)
 
-app.run('0.0.0.0', 8000)    #run for debag
+#app.run('0.0.0.0', 8000)    #run for debag
 
-#if __name__ == '__main__':   #run prodaction
-   # app.run()
+if __name__ == '__main__':   #run production
+    app.run()
