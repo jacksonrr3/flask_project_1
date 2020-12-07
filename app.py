@@ -271,7 +271,6 @@ def render_departure(departure):
 
 @app.route('/tours/<int:id>/')
 def render_tour(id):
-    print(request.path)
     tour_data = tours[id]
     tour_departure = departures[tour_data["departure"]]
     tour_stars = int(tour_data["stars"])
