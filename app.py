@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 
 from data import title, subtitle, description, departures, tours
 
@@ -35,9 +35,11 @@ def render_departure(departure):
                            departure=departure)
 
 
-@app.route('/tours/<int:id>/')
-def render_tour(id):
-    tour_data = tours[id]
+@app.route('/tours/<int:tour_id>/')
+def render_tour(tour_id):
+    tour_data = tours.get(tour_id)
+    if tour_data is None:
+        abort(404)
     tour_departure = departures[tour_data["departure"]]
     tour_stars = int(tour_data["stars"])
     return render_template('tour.html',
