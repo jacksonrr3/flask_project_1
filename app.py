@@ -48,8 +48,8 @@ def render_tour(id):
                            departures=departures)
 
 
-app.run('0.0.0.0', 8000)    #debag run
+#app.run('0.0.0.0', 8000)    #debag run
 
 
-#if __name__ == '__main__':   #production run
-#    app.run()
+if __name__ == '__main__':   #production run
+    app.run()
