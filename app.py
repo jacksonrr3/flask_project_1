@@ -6,11 +6,6 @@ from data import title, subtitle, description, departures, tours
 app = Flask(__name__)
 
 
-@app.route('/test/')
-def render_test():
-    return render_template('about.html', test_dict={'name': 'test_dict_name'})
-
-
 @app.route('/')
 def render_main():
     return render_template('index.html',
@@ -53,8 +48,8 @@ def render_tour(id):
                            departures=departures)
 
 
-#app.run('0.0.0.0', 8000)    #debag run
+app.run('0.0.0.0', 8000)    #debag run
 
 
-if __name__ == '__main__':   #production run
-    app.run()
+#if __name__ == '__main__':   #production run
+#    app.run()
