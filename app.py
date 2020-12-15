@@ -8,6 +8,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def render_main():
+    """ render '/' route """
+
     return render_template('index.html',
                            title=title,
                            subtitle=subtitle,
@@ -18,6 +20,10 @@ def render_main():
 
 @app.route('/departures/<departure>/')
 def render_departure(departure):
+    """ prepare data for departure and render route """
+
+    if departure not in departures:
+        abort(404)
     departure_tours = {}
     price_list = []
     nights_list = []
@@ -37,6 +43,8 @@ def render_departure(departure):
 
 @app.route('/tours/<int:tour_id>/')
 def render_tour(tour_id):
+    """ prepare data for tour and render route """
+
     tour_data = tours.get(tour_id)
     if tour_data is None:
         abort(404)
@@ -50,8 +58,5 @@ def render_tour(tour_id):
                            departures=departures)
 
 
-#app.run('0.0.0.0', 8000)    #debag run
-
-
-if __name__ == '__main__':   #production run
+if __name__ == '__main__':
     app.run()
