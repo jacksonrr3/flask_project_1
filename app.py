@@ -22,8 +22,6 @@ def render_main():
 def render_departure(departure):
     """ prepare data for departure and render route """
 
-    if departure not in departures:
-        abort(404)
     departure_tours = {}
     price_list = []
     nights_list = []
